@@ -17,7 +17,7 @@ class farmers(Resource):
        data = request.json
        id_number = data['id_number']
        salary = data['salary']
-       connection = pymysql.connect(host="localhost", user='root', password='', database='PaaEmpDB')
+       connection = pymysql.connect(host="localhost", user='root', password='', database='BenDB')
        cursor = connection.cursor()
        sql = "update employees SET salary = %s where id_number = %s"
        try:
@@ -32,7 +32,7 @@ class farmers(Resource):
     def delete(self):
        data = request.json
        id_number = data['id_number']
-       connection = pymysql.connect(host="localhost", user='root', password='', database='PaaEmpDB')
+       connection = pymysql.connect(host="localhost", user='root', password='', database='BenDB')
        cursor = connection.cursor()
        sql = "delete from employees where id_number = %s"
        try:
@@ -53,7 +53,7 @@ class farmers(Resource):
         salary = data['salary']
         department = data['department']
 
-        connection = pymysql.connect(host="localhost", user='root', password='', database='PaaEmpDB')
+        connection = pymysql.connect(host="localhost", user='root', password='', database='BenDB')
         cursor = connection.cursor()
         sql = "insert into employees(id_number,username,others,salary,department) values(%s,%s,%s,%s,%s)"
         try:
@@ -66,7 +66,7 @@ class farmers(Resource):
 
 
     def get(self):
-        connection = pymysql.connect(host="localhost", user='root', password='', database='PaaEmpDB')
+        connection = pymysql.connect(host="localhost", user='root', password='', database='BenDB')
         cursor = connection.cursor()
         sql = "select  * from employees"
         cursor.execute(sql)
@@ -77,7 +77,7 @@ class farmers(Resource):
             return jsonify(employeesdata)
 
 
-        return jsonify({"message":"hey paa post to employee success"})
+        return jsonify({"message":"hey Bernard post to the bendb was a success"})
     
 api.add_resource(Employee, "/employees")
 
